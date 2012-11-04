@@ -17,8 +17,6 @@
  */
 package com.juick;
 
-import java.util.Vector;
-
 /**
  *
  * @author Ugnich Anton
@@ -29,9 +27,7 @@ public class Place {
     public double lat = 0;
     public double lon = 0;
     public String name = null;
-    public String description = null;
     public int users = 0;
     public int messages = 0;
     public int distance = 0;
-    public Vector<String> tags = new Vector<String>();
 }

@@ -17,7 +17,8 @@
  */
 package com.juick;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -31,18 +32,20 @@ public class Message {
     public int ReplyTo = 0;
     public String Text = null;
     public User User = null;
-    public Vector<String> tags = new Vector<String>();
+    public ArrayList<String> Tags = new ArrayList<String>();
     public Date Timestamp = null;
     public String TimestampString = null;
-    public int MinutesAgo = 0;
+    public int TimeAgo = 0;
     public int Privacy = 1;
     public boolean ReadOnly = false;
-    public int replies = 0;
+    public boolean VisitorCanComment = true;
+    public int Replies = 0;
+    public String RepliesBy = null;
     public String AttachmentType = null;
     public String Photo = null;
     public String Video = null;
-    public Place place = null;
-    public Vector<Message> childs = new Vector<Message>();
+    public Place Place = null;
+    public ArrayList<Message> childs = new ArrayList<Message>();
 
     public Message() {
     }
@@ -53,25 +56,22 @@ public class Message {
         ReplyTo = msg.ReplyTo;
         Text = msg.Text;
         User = msg.User;
-        tags = msg.tags;
+        Tags = msg.Tags;
         Timestamp = msg.Timestamp;
         TimestampString = msg.TimestampString;
-        MinutesAgo = msg.MinutesAgo;
+        TimeAgo = msg.TimeAgo;
         Privacy = msg.Privacy;
         ReadOnly = msg.ReadOnly;
-        replies = msg.replies;
+        Replies = msg.Replies;
         AttachmentType = msg.AttachmentType;
         Photo = msg.Photo;
         Video = msg.Video;
-        place = msg.place;
+        Place = msg.Place;
         childs = msg.childs;
     }
 
     public void parseTags(String strTags) {
-        String arrTags[] = strTags.split(" ");
-        for (int i = 0; i < arrTags.length; i++) {
-            tags.add(arrTags[i]);
-        }
+        Tags.addAll(Arrays.asList(strTags.split(" ")));
     }
 
     @Override
@@ -109,7 +109,7 @@ public class Message {
     }
 
     public int getChildsCount() {
-        int cnt = 1;
+        int cnt = childs.size();
         for (int i = 0; i < childs.size(); i++) {
             cnt += childs.get(i).getChildsCount();
         }
@@ -121,7 +121,7 @@ public class Message {
             for (int i = 0; i < childs.size(); i++) {
                 childs.get(i).cleanupChilds();
             }
-            childs.removeAllElements();
+            childs.clear();
         }
     }
 
@@ -142,6 +142,9 @@ public class Message {
 
     public String getTagsString() {
         String ret = "";
+        for (int i = 0; i < Tags.size(); i++) {
+            ret += " *" + Tags.get(i);
+        }
         if (Privacy == -2) {
             ret += " *private";
         }
@@ -153,9 +156,6 @@ public class Message {
         }
         if (ReadOnly) {
             ret += " *readonly";
-        }
-        for (int i = 0; i < tags.size(); i++) {
-            ret += " *" + tags.elementAt(i);
         }
         return ret;
     }
