@@ -27,6 +27,8 @@ public class User {
     public String UName = null;
     public Object Avatar = null;
     public String FullName = null;
+    public String JID = null;
+    public int MessagesCount = 0;
 
     @Override
     public boolean equals(Object obj) {
