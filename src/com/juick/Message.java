@@ -37,6 +37,7 @@ public class Message {
     public String TimestampString = null;
     public int TimeAgo = 0;
     public int Privacy = 1;
+    public boolean FriendsOnly = false;
     public boolean ReadOnly = false;
     public boolean VisitorCanComment = true;
     public int Replies = 0;
@@ -61,6 +62,7 @@ public class Message {
         TimestampString = msg.TimestampString;
         TimeAgo = msg.TimeAgo;
         Privacy = msg.Privacy;
+        FriendsOnly = msg.FriendsOnly;
         ReadOnly = msg.ReadOnly;
         Replies = msg.Replies;
         AttachmentType = msg.AttachmentType;
@@ -144,6 +146,9 @@ public class Message {
         String ret = "";
         for (int i = 0; i < Tags.size(); i++) {
             ret += " *" + Tags.get(i);
+        }
+        if (FriendsOnly) {
+            ret += " *friends";
         }
         if (Privacy == -2) {
             ret += " *private";
