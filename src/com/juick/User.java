@@ -29,6 +29,7 @@ public class User {
     public String FullName = null;
     public String JID = null;
     public int MessagesCount = 0;
+    public String AuthHash = null;
 
     @Override
     public boolean equals(Object obj) {
