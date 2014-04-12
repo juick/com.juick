@@ -31,6 +31,19 @@ public class User {
     public int MessagesCount = 0;
     public String AuthHash = null;
 
+    public User() {
+    }
+
+    public User(User u) {
+        UID = u.UID;
+        UName = u.UName;
+        Avatar = u.Avatar;
+        FullName = u.FullName;
+        JID = u.JID;
+        MessagesCount = u.MessagesCount;
+        AuthHash = u.AuthHash;
+    }
+
     @Override
     public boolean equals(Object obj) {
         return (obj instanceof User && ((User) obj).UID == this.UID);

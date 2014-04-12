@@ -46,6 +46,8 @@ public class Message {
     public String Photo = null;
     public String Video = null;
     public Place Place = null;
+    public int Likes = 0;
+    public boolean UserLike = false;
     public ArrayList<Message> childs = new ArrayList<Message>();
 
     public Message() {
@@ -69,6 +71,8 @@ public class Message {
         Photo = msg.Photo;
         Video = msg.Video;
         Place = msg.Place;
+        Likes = msg.Likes;
+        UserLike = msg.UserLike;
         childs = msg.childs;
     }
 
