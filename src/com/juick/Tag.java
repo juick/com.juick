@@ -25,6 +25,7 @@ public class Tag implements Comparable<Tag> {
 
     public String Name = null;
     public int TID = 0;
+    public int SynonymID = 0;
     public int UsageCnt = 0;
 
     @Override
