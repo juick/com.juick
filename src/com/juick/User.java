@@ -30,6 +30,7 @@ public class User {
     public String JID = null;
     public int MessagesCount = 0;
     public String AuthHash = null;
+    public boolean Banned = false;
 
     public User() {
     }
@@ -42,6 +43,7 @@ public class User {
         JID = u.JID;
         MessagesCount = u.MessagesCount;
         AuthHash = u.AuthHash;
+        Banned = u.Banned;
     }
 
     @Override
