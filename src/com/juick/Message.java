@@ -39,6 +39,7 @@ public class Message {
     public int Privacy = 1;
     public boolean FriendsOnly = false;
     public boolean ReadOnly = false;
+    public boolean Hidden = false;
     public boolean VisitorCanComment = true;
     public int Replies = 0;
     public String RepliesBy = null;
@@ -66,6 +67,7 @@ public class Message {
         Privacy = msg.Privacy;
         FriendsOnly = msg.FriendsOnly;
         ReadOnly = msg.ReadOnly;
+        Hidden = msg.Hidden;
         Replies = msg.Replies;
         AttachmentType = msg.AttachmentType;
         Photo = msg.Photo;
