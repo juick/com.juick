@@ -150,23 +150,25 @@ public class Message {
 
     public String getTagsString() {
         String ret = "";
-        for (int i = 0; i < Tags.size(); i++) {
-            ret += " *" + Tags.get(i);
-        }
-        if (FriendsOnly) {
-            ret += " *friends";
-        }
-        if (Privacy == -2) {
-            ret += " *private";
-        }
-        if (Privacy == -1) {
-            ret += " *friends";
-        }
-        if (Privacy == 2) {
-            ret += " *public";
-        }
-        if (ReadOnly) {
-            ret += " *readonly";
+        if (!Tags.isEmpty()) {
+            for (int i = 0; i < Tags.size(); i++) {
+                ret += " *" + Tags.get(i);
+            }
+            if (FriendsOnly) {
+                ret += " *friends";
+            }
+            if (Privacy == -2) {
+                ret += " *private";
+            }
+            if (Privacy == -1) {
+                ret += " *friends";
+            }
+            if (Privacy == 2) {
+                ret += " *public";
+            }
+            if (ReadOnly) {
+                ret += " *readonly";
+            }
         }
         return ret;
     }
