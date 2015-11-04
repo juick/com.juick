@@ -23,31 +23,71 @@ package com.juick;
  */
 public class User {
 
-    public int UID = 0;
-    public String UName = null;
+    private int UID = 0;
+    private String UName = null;
     public Object Avatar = null;
-    public String FullName = null;
-    public String JID = null;
+    private String FullName = null;
+    private String JID = null;
     public int MessagesCount = 0;
-    public String AuthHash = null;
+    private String AuthHash = null;
     public boolean Banned = false;
 
     public User() {
     }
 
     public User(User u) {
-        UID = u.UID;
-        UName = u.UName;
+        setUID(u.getUID());
+        setUName(u.getUName());
         Avatar = u.Avatar;
-        FullName = u.FullName;
-        JID = u.JID;
+        setFullName(u.getFullName());
+        setJID(u.getJID());
         MessagesCount = u.MessagesCount;
-        AuthHash = u.AuthHash;
+        setAuthHash(u.getAuthHash());
         Banned = u.Banned;
     }
 
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof User && ((User) obj).UID == this.UID);
+        return (obj instanceof User && ((User) obj).getUID() == this.getUID());
+    }
+
+    public int getUID() {
+        return UID;
+    }
+
+    public void setUID(int UID) {
+        this.UID = UID;
+    }
+
+    public String getUName() {
+        return UName;
+    }
+
+    public void setUName(String UName) {
+        this.UName = UName;
+    }
+
+    public String getFullName() {
+        return FullName;
+    }
+
+    public void setFullName(String fullName) {
+        FullName = fullName;
+    }
+
+    public String getJID() {
+        return JID;
+    }
+
+    public void setJID(String JID) {
+        this.JID = JID;
+    }
+
+    public String getAuthHash() {
+        return AuthHash;
+    }
+
+    public void setAuthHash(String authHash) {
+        AuthHash = authHash;
     }
 }

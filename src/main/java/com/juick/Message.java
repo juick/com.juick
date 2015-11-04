@@ -27,11 +27,13 @@ import java.util.Date;
  */
 public class Message {
 
-    public int MID = 0;
-    public int RID = 0;
+    private int MID = 0;
+    
+    private int RID = 0;
+    
     public int ReplyTo = 0;
-    public String Text = null;
-    public User User = null;
+    private String Text = null;
+    private User User = null;
     public ArrayList<String> Tags = new ArrayList<String>();
     public Date Timestamp = null;
     public String TimestampString = null;
@@ -55,11 +57,11 @@ public class Message {
     }
 
     public Message(Message msg) {
-        MID = msg.MID;
-        RID = msg.RID;
+        setMID(msg.getMID());
+        setRID(msg.getRID());
         ReplyTo = msg.ReplyTo;
-        Text = msg.Text;
-        User = msg.User;
+        setText(msg.getText());
+        setUser(msg.getUser());
         Tags = msg.Tags;
         Timestamp = msg.Timestamp;
         TimestampString = msg.TimestampString;
@@ -88,7 +90,7 @@ public class Message {
             return false;
         }
         Message jmsg = (Message) obj;
-        return (this.MID == jmsg.MID && this.RID == jmsg.RID);
+        return (this.getMID() == jmsg.getMID() && this.getRID() == jmsg.getRID());
     }
 
     public int compareTo(Object obj) throws ClassCastException {
@@ -97,16 +99,16 @@ public class Message {
         }
         Message jmsg = (Message) obj;
 
-        if (this.MID != jmsg.MID) {
-            if (this.MID > jmsg.MID) {
+        if (this.getMID() != jmsg.getMID()) {
+            if (this.getMID() > jmsg.getMID()) {
                 return -1;
             } else {
                 return 1;
             }
         }
 
-        if (this.RID != jmsg.RID) {
-            if (this.RID < jmsg.RID) {
+        if (this.getRID() != jmsg.getRID()) {
+            if (this.getRID() < jmsg.getRID()) {
                 return -1;
             } else {
                 return 1;
@@ -137,9 +139,9 @@ public class Message {
         if (AttachmentType != null) {
             String url = "http://i.juick.com/";
             url += AttachmentType.equals("mp4") ? "video" : "photos-1024";
-            url += "/" + MID;
-            if (RID > 0) {
-                url += "-" + RID;
+            url += "/" + getMID();
+            if (getRID() > 0) {
+                url += "-" + getRID();
             }
             url += "." + AttachmentType;
             return url;
@@ -171,5 +173,37 @@ public class Message {
             }
         }
         return ret;
+    }
+
+    public int getMID() {
+        return MID;
+    }
+
+    public void setMID(int MID) {
+        this.MID = MID;
+    }
+
+    public int getRID() {
+        return RID;
+    }
+
+    public void setRID(int RID) {
+        this.RID = RID;
+    }
+
+    public com.juick.User getUser() {
+        return User;
+    }
+
+    public void setUser(com.juick.User user) {
+        User = user;
+    }
+
+    public String getText() {
+        return Text;
+    }
+
+    public void setText(String text) {
+        Text = text;
     }
 }
