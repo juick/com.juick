@@ -81,7 +81,9 @@ public class Message {
     }
 
     public void parseTags(String strTags) {
-        Tags.addAll(Arrays.asList(strTags.split(" ")));
+        if (strTags != null) {
+            Tags.addAll(Arrays.asList(strTags.split(" ")));
+        }
     }
 
     @Override
