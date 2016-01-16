@@ -35,8 +35,7 @@ public class Message {
     private String Text = null;
     private User User = null;
     public ArrayList<String> Tags = new ArrayList<String>();
-    public Date Timestamp = null;
-    public String TimestampString = null;
+    private Date date = null;
     public int TimeAgo = 0;
     public int Privacy = 1;
     public boolean FriendsOnly = false;
@@ -63,8 +62,7 @@ public class Message {
         setText(msg.getText());
         setUser(msg.getUser());
         Tags = msg.Tags;
-        Timestamp = msg.Timestamp;
-        TimestampString = msg.TimestampString;
+        setDate(msg.getDate());
         TimeAgo = msg.TimeAgo;
         Privacy = msg.Privacy;
         FriendsOnly = msg.FriendsOnly;
@@ -207,5 +205,14 @@ public class Message {
 
     public void setText(String text) {
         Text = text;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+
+        this.date = date;
     }
 }
